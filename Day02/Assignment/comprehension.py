@@ -1,17 +1,24 @@
-def comp():
-    str = input()
+def com():
+    str1 = input()
     count = 1
     res = ""
 
-    for i in range (len(str)):
-        if i == len(str) - 1:
-            res += str[i] + str(count)
-        elif str[i] == str[i+1]:
-            count+=1
+    for i in range (len(str1)):
+        if i == len(str1) - 1:
+            res+= str1[i] + str(count)
+
+        elif str1[i] == str1[i+1]:
+            count += 1
         else:
-            res += str[i] + str(count)
+            res += str1[i] + str(count)
             count = 1
 
-        if len(res.split('1') - 1 == len(str)):
-            res = str
+    if(len(str1) == len(res.split("1")) - 1):
+        res = str1
+
     print(res)
+
+def main():
+    com()
+
+main()
