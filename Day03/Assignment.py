@@ -71,6 +71,42 @@ def cart():
     cart = ["apple", "banana", "apple", "orange", "banana", "banana"]
     op = list({items for items in cart})
     print(f'{op = }')
+
+def game():
+    N = int(input("Enter the number of soldiers: "))
+    K = int(input("Enter the round to be eliminated: "))
+
+    list_ = [x for x in range(1, N+1)]
+    print(f"Soldier circle initialized: {list_}")
+    curr_index = 0
+    while len(list_) > 1:
+        curr_index = (curr_index + K -1) % len(list_)
+        f = list_.pop(curr_index)
+        print(f"Eliminated soldier: {f} (Remaining: {list_})")
+    print(f"The solo brave survior is: {list_[0]}")
+
+def snake_game():
+    grid = [["."] * 5 for _ in range(5)]
+    # print(grid)
+
+    for row in grid:
+        print(*row)
+
+    grid[1][2] = "F"
+
+    while True: 
+        l = input().split()
+        x,y = [int(k) for k in l]
+        grid[x-1][y-1] = "S"
+        for row in grid:
+            print(*row)
+        grid[x-1][y-1] = "."
+        if x == 2 and y == 3:
+            print("Yum! The snake ate the food!")
+            break
+
+
+    
     
 
 def main():
@@ -78,7 +114,9 @@ def main():
     # movie()
     # cargo()
     # spy()
-    cart()
+    # cart()
+    # game()
+    snake_game()
     ...
 
 main()

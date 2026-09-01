@@ -9,6 +9,7 @@ def amalgum():
 
         if key not in groups:
             groups[key] = []
+            print(f'{groups=}')
 
         groups[key].append(word)
         print(f"{groups=}")
