@@ -1,0 +1,42 @@
+import re
+def process_dataset(dataset):
+    parsed = map(
+        lambda item: (
+            item[0],
+            float(item[1].split(":")[1]),
+            float(item[2].split(":")[1])
+        ),
+        dataset
+    )
+
+    filtered = filter(
+        lambda item: item[1]<=1200, parsed
+    )
+
+    mapped = map(
+        lambda item: {
+            "product": item[0],
+            "price": item[1],
+            "score": item[2]
+        }, filtered
+    )
+
+    result = sorted(mapped, key=lambda x:x["score"], reverse=True)
+
+    return result
+
+def main():
+    data_input = [
+    ("Laptop", "Price: 1200", "Rating: 4.8"),
+    ("Phone", "Price: 800", "Rating: 4.5"),
+    ("Mouse", "Price: 25", "Rating: 4.7"),
+    ("Charger", "Price: 15", "Rating: 4.2")
+]
+    result = process_dataset(data_input)
+    print(result)
+    ...
+
+main()
+
+    
+    
