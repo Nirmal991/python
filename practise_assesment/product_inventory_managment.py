@@ -193,7 +193,7 @@ def main():
     while True:
         choice = menu()
         match choice:
-            case 0:
+            case 6:
                 break
             case 1:
                 add_product()
@@ -205,6 +205,8 @@ def main():
                 update_product()
             case 5:
                 delete_product()
+            case _:
+                print("Enter a valid choise to process the action")
                 
                 
 if __name__ == '__main__':
