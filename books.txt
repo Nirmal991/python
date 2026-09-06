@@ -1,0 +1,5 @@
+1|Python Programming|John Zelle|Technical|650.0|15
+2|Clean Code|Robert Martin|Technical|950.0|8
+3|The Great Gatsby|F. Scott Fitzgerald|Fiction|350.0|20
+4|The Alchemist|Paulo Coelho|Fiction|450.0|12
+5|Atomic Habits|James Clear|Self Help|550.0|10
