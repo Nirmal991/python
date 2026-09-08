@@ -1,37 +1,38 @@
 import subprocess
+import csv
 catalog = [
-    # {
-    #     "id": 1,
-    #     "title": "Python Programming",
-    #     "author": "John Zelle",
-    #     "genre": "Technical",
-    #     "price": 650.00,
-    #     "copies": 15
-    # },
-    # {
-    #     "id": 2,
-    #     "title": "Clean Code",
-    #     "author": "Robert Martin",
-    #     "genre": "Technical",
-    #     "price": 950.00,
-    #     "copies": 8
-    # },
-    # {
-    #     "id": 3,
-    #     "title": "The Great Gatsby",
-    #     "author": "F. Scott Fitzgerald",
-    #     "genre": "Fiction",
-    #     "price": 350.00,
-    #     "copies": 20
-    # },
-    # {
-    #     "id": 4,
-    #     "title": "The Alchemist",
-    #     "author": "Paulo Coelho",
-    #     "genre": "Fiction",
-    #     "price": 450.00,
-    #     "copies": 12
-    # },
+    {
+        "id": 1,
+        "title": "Python Programming",
+        "author": "John Zelle",
+        "genre": "Technical",
+        "price": 650.00,
+        "copies": 15
+    },
+    {
+        "id": 2,
+        "title": "Clean Code",
+        "author": "Robert Martin",
+        "genre": "Technical",
+        "price": 950.00,
+        "copies": 8
+    },
+    {
+        "id": 3,
+        "title": "The Great Gatsby",
+        "author": "F. Scott Fitzgerald",
+        "genre": "Fiction",
+        "price": 350.00,
+        "copies": 20
+    },
+    {
+        "id": 4,
+        "title": "The Alchemist",
+        "author": "Paulo Coelho",
+        "genre": "Fiction",
+        "price": 450.00,
+        "copies": 12
+    },
     {
         "id": 5,
         "title": "Atomic Habits",
@@ -62,7 +63,7 @@ def menu():
     print(menu_txt)
     try:
         choice = int(input("Enter the choice you want: "))
-        if choice < 0 or choice > 8:
+        if choice < 0 or choice > 10:
             choice = -1
         return choice
     except:
@@ -278,7 +279,27 @@ def load_catalog_from_file(filepath: str) -> list[dict]:
         
     return catalog
     
+def load_to_csv():
+    
+    try:
+        _filename = input("Eneter the nam eof file: ")
+        with open(_filename, 'wt', encoding='utf-8') as file:
+            writer = csv.DictWriter(file, ['id', 'author', 'title', 'genre', 'price', 'copies'], lineterminator='\n', delimiter='|')
+            writer.writeheader()
+            writer.writerows(catalog)
+    except FileExistsError:
+        print(f"File with name {_filename} not found...")
 
+def csv_to_file():
+   filename = input("Enter the name of file:   ")
+   
+   with open(filename, 'r', encoding='utf-8') as file:
+       result = csv.DictReader(file)
+       
+       for line in result:
+           print(line)
+           
+           
 def main():
     while True:
         # subprocess.call(["cls"], shell=True)
@@ -313,6 +334,10 @@ def main():
                 print(load)
             case 8:
                 break
+            case 9:
+                load_to_csv()
+            case 10:
+                csv_to_file()
             case _:
                 print("Inter the valid value in integer")
                 

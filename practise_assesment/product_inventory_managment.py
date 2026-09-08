@@ -207,8 +207,7 @@ def main():
                 delete_product()
             case _:
                 print("Enter a valid choise to process the action")
-                
-                
+                  
 if __name__ == '__main__':
     main()
         
