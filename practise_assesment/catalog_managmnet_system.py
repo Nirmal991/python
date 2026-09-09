@@ -171,25 +171,41 @@ def render_catalog(catalog: list[dict]) -> None:
         
 def query_books(catalog: list[dict], search_term: str) -> list[dict]:
     result = []
-    
+
     search_item = search_term.strip()
-    
+
     if search_item.isdigit():
-        
+
         book_id = int(search_item)
-        
+
         for book in catalog:
             if book["id"] == book_id:
                 result.append(book)
+
         return result
-                
+
     else:
-        search_item = search_term.strip().lower()
-        
+
+        search_item = search_item.lower()
+
         for book in catalog:
-            if search_item in book["title"].lower() or search_item in book["author"].lower():
-                result.append(book)     
+            if (
+                search_item in book["title"].lower()
+                or search_item in book["author"].lower()
+            ):
+                result.append(book)
+
+        # Sort the matching books
+        sort_choice = input("Sort by title or author? ").strip().lower()
+
+        if sort_choice == "title":
+            result.sort(key=lambda book: book["title"].lower())
+
+        elif sort_choice == "author":
+            result.sort(key=lambda book: book["author"].lower())
+
         return result
+
     
 def modify_book_details(catalog: list[dict], book_id: int) -> bool:
     try:
