@@ -294,7 +294,7 @@ def csv_to_file():
    filename = input("Enter the name of file:   ")
    
    with open(filename, 'r', encoding='utf-8') as file:
-       result = csv.DictReader(file)
+       result = csv.DictReader(file, delimiter='|')
        
        for line in result:
            print(line)

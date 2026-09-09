@@ -1,0 +1,2 @@
+1|Laptop|Electronics|55000|10
+2|Chair|Furniture|1500|50
