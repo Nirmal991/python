@@ -171,7 +171,43 @@ for word in words:
         print(f"{groups=}")
 
 print(list(groups.values()))
+
+def date_valid():
+    date = input("Enter the date for validation...")
     
+    split_date = str.split('/')
+    
+    if len(split_date) > 3:
+        print(f"Invalid input try in given format")
+        return
+    
+    day = int(split_date[0])
+    month = int(split_date[1])
+    year = int(split_date[2])
+    
+    months = ("January", "feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")
+    
+    if month > 12 and month < 1:
+        print("Invalid month")
+        return
+    
+    leap_year = (year % 400 == 0) or (year % 100 != 0 and year % 4 == 0) 
+    
+    if month == 2:
+        if leap_year:
+            max_days = 29
+        else:
+            max_days = 28
+            
+    elif month == 4 or month == 6 or month == 11:
+        max_days = 30
+    else:
+        max_days = 31
+        
+    if day <= 0 or day > max_days:
+        print('Invalid days')
+        return
+    print(f"{months[month-1]} {day},  {year}")
     
     
     
